@@ -28,6 +28,6 @@ exports.login = (req, res) => {
       return;
     }
 
-    res.status(200).send('User logged in successfully');
+    res.status(200).send(results);
   });
 };

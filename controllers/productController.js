@@ -54,3 +54,17 @@ exports.deleteProduct = (req, res) => {
     }
   });
 };
+
+exports.getRecommendedProducts = (req, res) => {
+  const { type } = req.query;
+  const typeArray = type.split(',');
+
+  Product.getAll((err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      const filteredProducts = results.filter(product => typeArray.includes(product.type));
+      res.json(filteredProducts);
+    }
+  });
+};
